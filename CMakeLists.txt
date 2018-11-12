@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.3)
+project(web_crawler)
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+find_package(Threads)
+find_package(CURL)
+file(GLOB SOURCE_FILES "*.h" "*.cpp")
+include_directories(${CURL_INCLUDE_DIRECTORIES})
+add_executable(crawler ${SOURCE_FILES})
+target_link_libraries(crawler ${CMAKE_THREAD_LIBS_INIT} ${CURL_LIBRARIES})
